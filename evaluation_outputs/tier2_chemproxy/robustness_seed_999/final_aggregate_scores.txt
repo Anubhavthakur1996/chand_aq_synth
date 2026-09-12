@@ -1,0 +1,5 @@
+--- FINAL DATASET METRICS ---
+Average W-Dist (EMD): 5.0196
+Average JS Divergence: 0.2455
+Average ΔACF: 0.1680
+Correlation Frobenius Norm: 1.0371

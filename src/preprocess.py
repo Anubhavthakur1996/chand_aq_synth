@@ -91,8 +91,14 @@ def preprocess_data(input_path=None, output_dir=None):
   print(f"Final valid sequence length: {len(df_clean)} hours.")
 
   # 7. Route Features for the 3-Tier Ablation Study
-  output_dir.mkdir(parents=True, exist_ok=True)
+  processed_dir = base_dir / "data" / "processed"
+  processed_dir.mkdir(parents=True, exist_ok=True)
   
+  # Always save the full master processed file where prep_experiments expects it
+  master_output_path = processed_dir / "chandigarh_sector22_processed.csv"
+  df_clean.to_csv(master_output_path)
+  print(f"Master processed dataset saved to: {master_output_path}")
+
   # Target variables + Meteorology (No explicit traffic or combustion signatures)
   tier1_baseline = ['pm25', 'pm10', 'o3', 'co', 'so2', 'temp', 'rh', 'ws', 'wd']
   
@@ -103,6 +109,7 @@ def preprocess_data(input_path=None, output_dir=None):
   tier3_full_proxy = tier2_chem_proxy + ['hour_sin', 'hour_cos', 'dow_sin', 'dow_cos']
 
   # 8. Export Generative Seeds
+  output_dir.mkdir(parents=True, exist_ok=True)
   print("\n--- Exporting Ablation Seeds ---")
   df_clean[tier1_baseline].to_csv(output_dir / "tier1_baseline_seed.csv")
   print(f"Tier 1 (Baseline): Saved with {len(tier1_baseline)} features.")

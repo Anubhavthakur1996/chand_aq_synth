@@ -1,0 +1,11 @@
+1. GOLDEN SEED REPLICATION (100,000 Epochs | Seed 42)
+-------------------------------------------------------
+   TIER1_BASELINE -> RF: 16.3452 | GBM: 13.4156
+   TIER2_CHEMPROXY -> RF: 17.8123 | GBM: 16.6111
+   TIER3_FULLPROXY -> RF: 10.5358 | GBM: 10.3840
+
+2. ROBUSTNESS & CONVERGENCE CHECK (5-Seed Average)
+-------------------------------------------------------
+   TIER1_BASELINE -> RF: 11.4266 ± 2.5739 | GBM: 11.5660 ± 1.2548
+   TIER2_CHEMPROXY -> RF: 12.7112 ± 2.6050 | GBM: 13.5222 ± 1.8651
+   TIER3_FULLPROXY -> RF: 11.1074 ± 0.9661 | GBM: 12.1729 ± 1.4938

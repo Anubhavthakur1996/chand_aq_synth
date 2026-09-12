@@ -42,6 +42,6 @@ def run_tf_baseline(input_csv, output_csv):
   # Generate an equivalent sequence block
   synth_df = synth.sample(n_samples=1) 
   
-  # Save directly to your synthetic data folder
+  # Save directly to our synthetic data folder
   synth_df.to_csv(output_csv, index=False)
   print(f"TensorFlow benchmark generated and saved to: {output_csv}")

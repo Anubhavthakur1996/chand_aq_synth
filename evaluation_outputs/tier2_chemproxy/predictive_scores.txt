@@ -1,0 +1,8 @@
+--- TSTR DOWNSTREAM UTILITY (Target: pm25) ---
+Random Forest        -> R2: 0.3441 | RMSE: 26.2369 | MAE: 17.8123
+LightGBM             -> R2: 0.4177 | RMSE: 24.7209 | MAE: 16.6111
+LSTM (PyTorch)       -> R2: -1.0877 | RMSE: 46.8081 | MAE: 33.8758
+Shuffle-Synth (Ctrl) -> R2: -0.1523 | RMSE: 34.7744 | MAE: 27.1710
+
+[Utility Gap] RF TRTR MAE: 9.0746 -> TSTR MAE: 17.8123
+Utility Retention Ratio: 1.9629x

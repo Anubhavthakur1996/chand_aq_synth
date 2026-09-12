@@ -1,0 +1,64 @@
+=== COMPLETE MASTER ABLATION RESULTS (WITH LSTM & SHUFFLE CONTROLS) ===
+
+==================================================
+[TIER1_BASELINE]
+==================================================
+--- FINAL DATASET METRICS ---
+Average W-Dist (EMD): 4.0197
+Average JS Divergence: 0.2276
+Average ΔACF: 0.1372
+Correlation Frobenius Norm: 0.7694
+
+--- TSTR DOWNSTREAM UTILITY (Target: pm25) ---
+Random Forest        -> R2: 0.4030 | RMSE: 25.0307 | MAE: 16.3452
+LightGBM             -> R2: 0.5281 | RMSE: 22.2535 | MAE: 13.4156
+LSTM (PyTorch)       -> R2: -1.1151 | RMSE: 47.1137 | MAE: 34.3156
+Shuffle-Synth (Ctrl) -> R2: -0.2705 | RMSE: 36.5149 | MAE: 28.9289
+
+[Utility Gap] RF TRTR MAE: 9.1850 -> TSTR MAE: 16.3452
+Utility Retention Ratio: 1.7796x
+
+==================================================
+[TIER2_CHEMPROXY]
+==================================================
+--- FINAL DATASET METRICS ---
+Average W-Dist (EMD): 3.8084
+Average JS Divergence: 0.2225
+Average ΔACF: 0.1254
+Correlation Frobenius Norm: 0.7128
+
+--- TSTR DOWNSTREAM UTILITY (Target: pm25) ---
+Random Forest        -> R2: 0.3441 | RMSE: 26.2369 | MAE: 17.8123
+LightGBM             -> R2: 0.4177 | RMSE: 24.7209 | MAE: 16.6111
+LSTM (PyTorch)       -> R2: -1.0877 | RMSE: 46.8081 | MAE: 33.8758
+Shuffle-Synth (Ctrl) -> R2: -0.1523 | RMSE: 34.7744 | MAE: 27.1710
+
+[Utility Gap] RF TRTR MAE: 9.0746 -> TSTR MAE: 17.8123
+Utility Retention Ratio: 1.9629x
+
+==================================================
+[TIER3_FULLPROXY]
+==================================================
+--- FINAL DATASET METRICS ---
+Average W-Dist (EMD): 3.6857
+Average JS Divergence: 0.3572
+Average ΔACF: 0.2309
+Correlation Frobenius Norm: 1.9900
+
+--- TSTR DOWNSTREAM UTILITY (Target: pm25) ---
+Random Forest        -> R2: 0.5233 | RMSE: 22.3674 | MAE: 10.5358
+LightGBM             -> R2: 0.5259 | RMSE: 22.3055 | MAE: 10.3840
+LSTM (PyTorch)       -> R2: -1.0812 | RMSE: 46.7353 | MAE: 33.6591
+Shuffle-Synth (Ctrl) -> R2: -0.0016 | RMSE: 32.4215 | MAE: 23.1032
+
+[Utility Gap] RF TRTR MAE: 8.8998 -> TSTR MAE: 10.5358
+Utility Retention Ratio: 1.1838x
+
+==================================================
+[CROSS-TIER SYNTHESIS TABLE]
+==================================================
+Tier               | RF MAE   | LightGBM MAE | LSTM MAE   | Shuffle MAE
+--------------------------------------------------------------------
+tier1_baseline     | 16.3452  | 13.4156      | 34.3156    | 28.9289   
+tier2_chemproxy    | 17.8123  | 16.6111      | 33.8758    | 27.1710   
+tier3_fullproxy    | 10.5358  | 10.3840      | 33.6591    | 23.1032   
