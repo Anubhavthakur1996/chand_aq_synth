@@ -1,7 +1,7 @@
 # Spatiotemporal Proxy Injection in DoppelGANger: Accelerated Synthetic Data Generation for Multivariate Air Quality
 
 ## Description
-This repository contains the codebase, training orchestration, and evaluation framework for an ablation study on generating high-fidelity synthetic air quality data (PM2.5) using the DoppelGANger architecture.
+This repository contains the codebase, training architecture, and evaluation framework for an ablation study on generating high-fidelity synthetic air quality data using sector 22, Chandigarh, India AQ data with the help of DoppelGANger architecture.
 
 While existing literature often relies on brute-force, high-epoch training (e.g., 100,000 epochs) to force GAN convergence on time-series meteorological data, this study demonstrates that such approaches are prone to overfitting and mode collapse. By injecting specific physical and temporal anchors (spatiotemporal proxies), we prove that the GAN can achieve superior downstream predictive utility in a fraction of the compute time (10,000 epochs).
 
@@ -31,6 +31,26 @@ Data fidelity is evaluated using a Train-on-Synthetic, Test-on-Real (TSTR) parad
 2. **Utility Retention Ratio:** Measures the gap between a model trained on real data (TRTR) vs synthetic data (TSTR). Tier 3 achieved an exceptional 1.18x retention ratio (MAE: 10.53), vastly outperforming Tier 1 (1.77x) and Tier 2 (1.96x).
 
 3. **Shuffle-Synth Negative Control:** Synthetic time-series data is randomly shuffled across the time axis before TSTR evaluation. The resulting collapse in predictive utility (e.g., Tier 3 Shuffle MAE jumping to 23.10 with a negative R²) mathematically proves the GAN learned genuine temporal mechanics, not just marginal distributions.
+
+```
+==================================================
+[TIER3_FULLPROXY]
+==================================================
+--- FINAL DATASET METRICS ---
+Average W-Dist (EMD): 3.6857
+Average JS Divergence: 0.3572
+Average ΔACF: 0.2309
+Correlation Frobenius Norm: 1.9900
+
+--- TSTR DOWNSTREAM UTILITY (Target: pm25) ---
+Random Forest        -> R2: 0.5233 | RMSE: 22.3674 | MAE: 10.5358
+LightGBM             -> R2: 0.5259 | RMSE: 22.3055 | MAE: 10.3840
+LSTM (PyTorch)       -> R2: -1.0812 | RMSE: 46.7353 | MAE: 33.6591
+Shuffle-Synth (Ctrl) -> R2: -0.0016 | RMSE: 32.4215 | MAE: 23.1032
+
+[Utility Gap] RF TRTR MAE: 8.8998 -> TSTR MAE: 10.5358
+Utility Retention Ratio: 1.1838x 
+```
 
 ## Installation
 ```bash
@@ -83,9 +103,9 @@ If you use this dataset, codebase, or methodology in your research, please cite 
 
 **BibTeX:**
 ```bibtex
-@article{yourname2026doppelganger,
-  title={Spatiotemporal Proxy Injection in DoppelGANger for PM2.5 Synthetic Data Generation},
-  author={[Your Last Name], [Your First Name]},
+@article{thakuranubhavsingh2026doppelganger,
+  title={Spatiotemporal Proxy Injection in DoppelGANger for Synthetic Data Generation},
+  author={[Singh], [Thakur Anubhav]},
   journal={TBD},
   year={2026}
 }
@@ -106,5 +126,5 @@ If you use this dataset, codebase, or methodology in your research, please cite 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Author
-Thakur Aubhav Singh
+Thakur Anubhav Singh
 (anubhavthakur1996@outlook.com)
